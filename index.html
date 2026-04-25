@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our 4th Proposal Anniversary | Vedansh & Megha</title>
+    <meta name="description"
+        content="A love story of Vedansh & Megha — celebrating 4 beautiful years together since April 26, 2022.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&family=Dancing+Script:wght@600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.6.0/confetti.browser.min.js"></script>
+</head>
+
+<body>
+
+    <!-- PARTICLE CANVAS -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- CURSOR -->
+    <div id="cursor-outer"></div>
+    <div id="cursor-inner"></div>
+
+    <!-- LOADER -->
+    <div id="loader">
+        <div class="loader-heart">
+            <div class="heart-shape"></div>
+        </div>
+        <p class="loader-text">Loading our love story<span class="dots">...</span></p>
+    </div>
+
+    <!-- LOCK SCREEN -->
+    <div id="lockScreen" class="lock-screen active">
+        <div class="glass-card lock-card">
+            <div class="lock-icon">🔒</div>
+            <h2>Enter Passcode</h2>
+            <p>Only for Mishki's eyes 🌸</p>
+            <div class="pin-inputs">
+                <input type="password" maxlength="1" class="pin-box" data-index="0" inputmode="numeric">
+                <input type="password" maxlength="1" class="pin-box" data-index="1" inputmode="numeric">
+                <input type="password" maxlength="1" class="pin-box" data-index="2" inputmode="numeric">
+                <input type="password" maxlength="1" class="pin-box" data-index="3" inputmode="numeric">
+            </div>
+            <p class="error-msg" id="pinError">Incorrect passcode</p>
+        </div>
+    </div>
+
+    <!-- MUSIC CONTROL -->
+    <div class="music-control glass-pill" id="musicToggle" title="Play / Pause music">
+        <div class="music-toggle-inner">
+            <div class="music-icon" id="musicIcon">♫</div>
+            <span class="now-playing">Kesariya ♥</span>
+        </div>
+        <div class="volume-controls" id="volumeControls" title="Volume Control">
+            <span class="vol-icon">🔉</span>
+            <input type="range" id="volSlider" class="vol-slider" min="0" max="1" step="0.01" value="0.5">
+            <span class="vol-icon">🔊</span>
+        </div>
+    </div>
+    <audio id="bgMusic">
+        <source src="audio/kesariya.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- PAGE COUNTER -->
+    <div class="page-indicator" id="pageIndicator">
+        <span id="currentPage">1</span> / <span id="totalPages">8</span>
+    </div>
+
+    <!-- MAIN WRAPPER -->
+    <div id="siteWrapper">
+
+        <!-- ══ PAGE 1 — HERO ══ -->
+        <div class="page-slide active" id="page-0">
+            <div class="hero-aurora">
+                <div class="aurora a1"></div>
+                <div class="aurora a2"></div>
+                <div class="aurora a3"></div>
+            </div>
+            <div class="hero-content">
+                <p class="pre-label">To My Dearest Mishki 🌸</p>
+                <h1 class="hero-title">
+                    Happy <span class="gradient-word">4th</span><br>Proposal Anniversary
+                </h1>
+                <p class="hero-sub">Vedansh &amp; Megha &nbsp;•&nbsp; Since <span class="highlight">26 April 2022</span>
+                </p>
+                <div class="floating-hearts" aria-hidden="true">
+                    <span>💗</span><span>💕</span><span>🌹</span><span>💫</span><span>💗</span><span>✨</span>
+                </div>
+                <p class="hero-hint">Use the arrows below to navigate our story →</p>
+            </div>
+        </div>
+
+        <!-- ══ PAGE 2 — PROPOSAL ══ -->
+        <div class="page-slide" id="page-1">
+            <div class="glass-card split-card">
+                <div class="card-text">
+                    <span class="date-badge">26 April 2022</span>
+                    <h2>The Day Everything Changed</h2>
+                    <p>It was more than just a question — it was the start of our forever. That single moment changed
+                        the colour of every day since. Looking back, saying those four words was the most beautiful
+                        decision of my entire life.</p>
+                    <div class="stat-row">
+                        <div class="stat">
+                            <span class="stat-num">4</span>
+                            <span class="stat-lbl">Years Together</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num">∞</span>
+                            <span class="stat-lbl">Memories Made</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num">1</span>
+                            <span class="stat-lbl">Perfect Match</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-visual">
+                    <div class="big-emoji-scene">
+                        <div class="emoji-ring">💍</div>
+                        <div class="emoji-sparkle s1">✨</div>
+                        <div class="emoji-sparkle s2">🌸</div>
+                        <div class="emoji-sparkle s3">💗</div>
+                        <div class="emoji-sparkle s4">⭐</div>
+                    </div>
+                    <p class="scene-caption">"Will you be mine?"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ PAGE 3 — CLOCK ══ -->
+        <div class="page-slide" id="page-2">
+            <div class="glass-card center-card">
+                <h2>Every Second With You Counts</h2>
+                <p class="section-sub">We have been in love for…</p>
+                <div id="together-counter">
+                    <div class="time-block"><span id="years">0</span><label>Years</label></div>
+                    <div class="time-sep">:</div>
+                    <div class="time-block"><span id="months">0</span><label>Months</label></div>
+                    <div class="time-sep">:</div>
+                    <div class="time-block"><span id="days">0</span><label>Days</label></div>
+                    <div class="time-sep">:</div>
+                    <div class="time-block"><span id="hours">0</span><label>Hours</label></div>
+                    <div class="time-sep">:</div>
+                    <div class="time-block"><span id="minutes">0</span><label>Minutes</label></div>
+                    <div class="time-sep">:</div>
+                    <div class="time-block"><span id="seconds">0</span><label>Seconds</label></div>
+                </div>
+                <p class="counter-footer">…and counting for eternity 🕊️</p>
+            </div>
+        </div>
+
+        <!-- ══ PAGE 4 — A–Z ══ -->
+        <div class="page-slide" id="page-3">
+            <div class="az-page-wrapper">
+                <div class="section-header">
+                    <h2>The A–Z of <span class="gradient-word">Us</span></h2>
+                    <p>Hover each letter to see what it means ✨</p>
+                </div>
+                <div class="alphabet-grid" id="alphabetGrid"></div>
+            </div>
+        </div>
+
+        <!-- ══ PAGE 5 — PLAYLIST ══ -->
+        <div class="page-slide" id="page-4">
+            <div class="glass-card playlist-card">
+                <div class="vinyl-wrap">
+                    <div class="vinyl-ring">
+                        <div class="vinyl-disc">
+                            <div class="vinyl-label">🎵</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="playlist-info">
+                    <h2>Our Soundtrack</h2>
+                    <p class="section-sub">Songs that live in our hearts</p>
+                    <ul class="song-list" id="songList">
+                        <li class="active" data-emoji="🎶" data-src="audio/kesariya.mp3">Kesariya</li>
+                        <li data-emoji="🌙" data-src="audio/Ishq Hai.mp3">Ishq Hai</li>
+                        <li data-emoji="🌟" data-src="audio/Kaise Ab Kahein.mp3">Kaise Ab Kahein</li>
+                        <li data-emoji="💌" data-src="audio/Raat Bhar.mp3">Raat Bhar</li>
+                        <li data-emoji="🌹" data-src="audio/Sheesha.mp3">Sheesha</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ PAGE 6 — REASONS ══ -->
+        <div class="page-slide" id="page-5">
+            <div class="reasons-page">
+                <h2>Reasons I Smile Because of You</h2>
+                <div class="reason-cards">
+                    <div class="reason-card glass-card mini">
+                        <div class="reason-icon">😊</div>
+                        <h3>Your Smile</h3>
+                        <p>It is my favourite view in the whole world.</p>
+                    </div>
+                    <div class="reason-card glass-card mini">
+                        <div class="reason-icon">🤗</div>
+                        <h3>Your Hugs</h3>
+                        <p>The safest place I have ever known.</p>
+                    </div>
+                    <div class="reason-card glass-card mini">
+                        <div class="reason-icon">💬</div>
+                        <h3>Late Night Talks</h3>
+                        <p>Where we share our deepest thoughts.</p>
+                    </div>
+                    <div class="reason-card glass-card mini">
+                        <div class="reason-icon">📚</div>
+                        <h3>Your Wisdom</h3>
+                        <p>You always know what to say.</p>
+                    </div>
+                    <div class="reason-card glass-card mini">
+                        <div class="reason-icon">🌸</div>
+                        <h3>Your Kindness</h3>
+                        <p>The most beautiful thing about you.</p>
+                    </div>
+                    <div class="reason-card glass-card mini">
+                        <div class="reason-icon">🎉</div>
+                        <h3>Your Laugh</h3>
+                        <p>The sound I want to hear every day.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ PAGE 7 — LETTER ══ -->
+        <div class="page-slide" id="page-6">
+            <div class="letter-envelope">
+                <div class="envelope-flap"></div>
+                <div class="letter-paper">
+                    <div class="letter-lines" aria-hidden="true"></div>
+                    <h2 class="letter-greeting">My Dearest Mishki,</h2>
+                    <div class="letter-body">
+                        <p>These four years have been nothing short of a dream come true. From that nervous proposal in
+                            April 2022 to the beautiful life we are building together today — every single moment with
+                            you is something I would never trade for anything.</p>
+                        <p>You are my best friend, my peace, and my home. Every morning feels brighter because you
+                            exist, and every night feels calmer because I know you are there.</p>
+                        <p>I promise to keep choosing you, every single day, for the rest of my life. Happy Anniversary,
+                            Megha. 🌸</p>
+                        <p class="letter-signature">With all my love,<br><span>Vedansh ❤️</span></p>
+                    </div>
+                    <div class="letter-seal">💌</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ PAGE 8 — FINAL WISH ══ -->
+        <div class="page-slide" id="page-7">
+            <div class="wish-aurora">
+                <div class="aurora b1"></div>
+                <div class="aurora b2"></div>
+            </div>
+            <div class="wish-content">
+                <div class="floating-big-heart">💗</div>
+                <h1 class="glow-title">Always &amp; Forever</h1>
+                <p class="wish-sub">Happy 4th Proposal Anniversary, Megha! 🌸</p>
+                <p class="wish-date">26 April 2022 — 26 April 2026</p>
+                <button id="surpriseBtn" class="premium-btn pulse-btn">
+                    <span>Open Your Surprise 🎁</span>
+                </button>
+            </div>
+        </div>
+
+    </div><!-- /siteWrapper -->
+
+    <!-- PAGE NAVIGATION -->
+    <div class="page-nav" id="pageNav">
+        <button class="nav-btn" id="prevBtn" aria-label="Previous page" disabled>
+            <span>←</span>
+        </button>
+        <div class="page-dots" id="pageDots"></div>
+        <button class="nav-btn" id="nextBtn" aria-label="Next page">
+            <span>→</span>
+        </button>
+    </div>
+
+    <!-- SURPRISE MODAL -->
+    <div id="surpriseModal" class="modal-overlay" role="dialog" aria-modal="true">
+        <div class="modal-glass modal-glass-large">
+            <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+            <div class="modal-heart-burst">💗</div>
+            <h2 class="modal-title">Beautiful Memories</h2>
+
+            <div class="slider-master-container">
+                <button class="slider-btn prev" id="memPrev" aria-label="Previous">❮</button>
+                <div class="memory-slider-wrapper">
+                    <div class="memory-gallery" id="memGallery">
+                        <div class="memory-card">
+                            <img src="assets/1.jpeg" alt="Memory 1">
+                        </div>
+                        <div class="memory-card">
+                            <video src="assets/2.mp4" autoplay loop muted playsinline></video>
+                        </div>
+                        <div class="memory-card">
+                            <img src="assets/3.jpeg" alt="Memory 3">
+                        </div>
+                        <div class="memory-card">
+                            <img src="assets/4.jpeg" alt="Memory 4">
+                        </div>
+                    </div>
+                </div>
+                <button class="slider-btn next" id="memNext" aria-label="Next">❯</button>
+            </div>
+            <div class="slider-dots" id="memDots"></div>
+
+            <p class="modal-msg">Looking back at these precious moments from your past birthdays & Anniversaries, I'm
+                reminded of how lucky I am to celebrate you. Every smile, every laugh, and every beautiful memory we've
+                created together is a treasure I will keep in my heart forever. Thank you for being my person, my peace,
+                and my greatest joy. Here is to a lifetime of celebrating you. 🌸</p>
+            <div class="modal-roses">🌹🌷🌹🌷🌹</div>
+        </div>
+    </div>
+
+    <!-- FULLSCREEN LIGHTBOX -->
+    <div id="lightbox" class="lightbox-overlay" role="dialog" aria-modal="true">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close Fullscreen">✕</button>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="Fullscreen Image" style="display: none;">
+            <video id="lightboxVideo" src="" autoplay loop playsinline controls style="display: none;"></video>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
